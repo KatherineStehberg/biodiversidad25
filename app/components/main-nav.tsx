@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Home, Leaf, Briefcase, BookOpen, Users, Mail, Info } from 'lucide-react'
+import { Home, Leaf, Briefcase, BookOpen, Users, Mail, Info, Gamepad2 } from 'lucide-react'
 
 const navItems = [
   { name: 'Inicio', href: '/', icon: Home },
@@ -10,6 +10,7 @@ const navItems = [
   { name: 'Comunidad', href: '/comunidad', icon: Users },
   { name: 'Sobre Nosotros', href: '/sobre-nosotros', icon: Info },
   { name: 'Contacto', href: '/contacto', icon: Mail },
+  { name: 'Juego Educativo', href: '/juego-educativo', icon: Gamepad2 },
 ]
 
 export function MainNav() {
@@ -33,4 +34,5 @@ export function MainNav() {
     </>
   )
 }
+
 
