@@ -39,9 +39,9 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-center text-green-800 mb-12">Nuestro Enfoque</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { icon: Leaf, title: 'Conservación', desc: 'Protegemos especies en peligro' },
-                { icon: Globe, title: 'Educación', desc: 'Compartimos conocimiento sobre biodiversidad' },
-                { icon: Users, title: 'Comunidad', desc: 'Construimos una red de entusiastas' },
+                { icon: Leaf, title: 'Conservación', desc: 'Protegemos especies en peligro', link: '/conservacion' },
+                { icon: Globe, title: 'Educación', desc: 'Compartimos conocimiento sobre biodiversidad', link: '/educacion' },
+                { icon: Users, title: 'Comunidad', desc: 'Construimos una red de entusiastas', link: '/comunidad' },
               ].map((item, index) => (
                 <Card key={index} className="bg-green-50 border-none shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
@@ -56,9 +56,11 @@ export default function Home() {
                     </CardDescription>
                   </CardContent>
                   <CardFooter className="justify-center">
-                    <Button variant="outline" className="text-green-600 hover:text-green-700">
-                      Saber más <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <Link href={item.link}>
+                      <Button variant="outline" className="text-green-600 hover:text-green-700">
+                        Saber más <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </CardFooter>
                 </Card>
               ))}
@@ -141,6 +143,7 @@ export default function Home() {
     </div>
   )
 }
+
 
 
 
