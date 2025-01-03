@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { ChevronRight, Leaf, Fish, Bird, Bug } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -10,28 +11,32 @@ export default function Biodiversidad() {
       descripcion: "Chile alberga más de 5,000 especies de plantas nativas, con un alto nivel de endemismo. Desde los resilientes cactus del desierto de Atacama hasta los majestuosos bosques de Araucarias en la Patagonia, la flora chilena es diversa y única.", 
       icon: Leaf, 
       imagen: "/placeholder.svg?height=200&width=400&text=Flora+Chilena",
-      ejemplos: "Alerce, Copihue, Araucaria"
+      ejemplos: "Alerce, Copihue, Araucaria",
+      link: "/biodiversidad/flora"
     },
     { 
       titulo: "Fauna Terrestre", 
       descripcion: "La fauna terrestre de Chile incluye una variedad de mamíferos, reptiles y anfibios adaptados a diversos hábitats. Muchas especies son endémicas, lo que significa que no se encuentran en ningún otro lugar del mundo.", 
       icon: Bird, 
       imagen: "/placeholder.svg?height=200&width=400&text=Fauna+Terrestre+Chilena",
-      ejemplos: "Puma, Huemul, Zorro Culpeo"
+      ejemplos: "Puma, Huemul, Zorro Culpeo",
+      link: "/biodiversidad/fauna-terrestre"
     },
     { 
       titulo: "Fauna Marina", 
       descripcion: "Con más de 4,000 km de costa, Chile posee una rica biodiversidad marina. Las aguas chilenas albergan desde pequeños crustáceos hasta grandes mamíferos marinos, muchos de los cuales son cruciales para los ecosistemas oceánicos.", 
       icon: Fish, 
       imagen: "/placeholder.svg?height=200&width=400&text=Fauna+Marina+Chilena",
-      ejemplos: "Ballena Azul, Pingüino de Humboldt, Lobo Marino"
+      ejemplos: "Ballena Azul, Pingüino de Humboldt, Lobo Marino",
+      link: "/biodiversidad/fauna-marina"
     },
     { 
       titulo: "Insectos", 
       descripcion: "Los insectos de Chile son diversos y juegan roles vitales en los ecosistemas. Desde polinizadores esenciales hasta descomponedores, los insectos chilenos son fundamentales para la salud de los hábitats naturales del país.", 
       icon: Bug, 
       imagen: "/placeholder.svg?height=200&width=400&text=Insectos+Chilenos",
-      ejemplos: "Ciervo Volante, Mariposa del Chagual, Abejorro Chileno"
+      ejemplos: "Ciervo Volante, Mariposa del Chagual, Abejorro Chileno",
+      link: "/biodiversidad/insectos"
     },
   ]
 
@@ -84,10 +89,12 @@ export default function Biodiversidad() {
                 <p className="mt-2 text-sm text-green-600">Ejemplos: {categoria.ejemplos}</p>
               </CardContent>
               <CardFooter>
-                <Button className="w-full">
-                  Explorar {categoria.titulo}
-                  <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href={categoria.link} className="w-full">
+                  <Button className="w-full">
+                    Explorar {categoria.titulo}
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}
