@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { ChevronRight, Leaf, Globe, Users, BookOpen, Briefcase } from 'lucide-react'
 
 export default function Home() {
@@ -44,11 +44,22 @@ export default function Home() {
                 { icon: Users, title: 'Comunidad', desc: 'Construimos una red de entusiastas' },
               ].map((item, index) => (
                 <Card key={index} className="bg-green-50 border-none shadow-lg hover:shadow-xl transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <item.icon className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                    <h3 className="text-2xl font-semibold text-green-800 mb-2">{item.title}</h3>
-                    <p className="text-green-700">{item.desc}</p>
+                  <CardHeader>
+                    <CardTitle className="flex items-center justify-center">
+                      <item.icon className="w-8 h-8 text-green-600 mr-2" />
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-center text-green-700">
+                      {item.desc}
+                    </CardDescription>
                   </CardContent>
+                  <CardFooter className="justify-center">
+                    <Button variant="outline" className="text-green-600 hover:text-green-700">
+                      Saber más <ChevronRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </CardFooter>
                 </Card>
               ))}
             </div>
@@ -93,13 +104,19 @@ export default function Home() {
                     height={200}
                     className="w-full h-48 object-cover"
                   />
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-green-800 mb-2">Título de la Noticia {item}</h3>
-                    <p className="text-green-700 mb-4">Breve descripción de la noticia y su importancia para la biodiversidad...</p>
-                    <Button variant="outline" className="text-green-600 hover:text-green-700">
-                      <ChevronRight className="w-4 h-4 mr-2" /> Leer más
-                    </Button>
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold text-green-800">Título de la Noticia {item}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-green-700">
+                      Breve descripción de la noticia y su importancia para la biodiversidad...
+                    </CardDescription>
                   </CardContent>
+                  <CardFooter>
+                    <Button variant="outline" className="w-full text-green-600 hover:text-green-700">
+                      <ChevronRight className="mr-2 h-4 w-4" /> Leer más
+                    </Button>
+                  </CardFooter>
                 </Card>
               ))}
             </div>
@@ -109,4 +126,6 @@ export default function Home() {
     </div>
   )
 }
+
+
 
