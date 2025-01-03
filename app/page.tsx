@@ -97,7 +97,7 @@ export default function Home() {
               </div>
               <div className="md:w-1/2">
                 <Image 
-                  src="/placeholder.svg" 
+                  src="/placeholder.svg?height=400&width=600"
                   alt="Base de datos de biodiversidad" 
                   width={600} 
                   height={400}
@@ -115,7 +115,7 @@ export default function Home() {
               {[1, 2, 3].map((item) => (
                 <Card key={item} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <Image 
-                    src={`/placeholder.svg`}
+                    src={`/placeholder.svg?height=200&width=400&text=Noticia+${item}`}
                     alt={`Noticia ${item}`}
                     width={400}
                     height={200}
@@ -143,6 +143,8 @@ export default function Home() {
     </div>
   )
 }
+
+
 
 
 

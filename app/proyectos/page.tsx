@@ -45,7 +45,7 @@ export default function Proyectos() {
             {[1, 2, 3].map((item) => (
               <Card key={item}>
                 <Image
-                  src={`/placeholder.svg`}
+                  src={`/placeholder.svg?height=300&width=400&text=Proyecto+Destacado+${item}`}
                   alt={`Proyecto Destacado ${item}`}
                   width={400}
                   height={300}
@@ -72,4 +72,5 @@ export default function Proyectos() {
     </div>
   )
 }
+
 

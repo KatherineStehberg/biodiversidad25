@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { ChevronRight, Leaf, Fish, Bird, Bug } from 'lucide-react'
 
@@ -31,10 +30,10 @@ export default function Biodiversidad() {
                 <CardDescription>{categoria.descripcion}</CardDescription>
               </CardContent>
               <CardFooter>
-                <Button className="w-full">
+                <button className="w-full">
                   Explorar {categoria.titulo}
                   <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
+                </button>
               </CardFooter>
             </Card>
           ))}
@@ -45,7 +44,7 @@ export default function Biodiversidad() {
             {[1, 2, 3].map((item) => (
               <Card key={item}>
                 <Image
-                  src={`/placeholder.svg`}
+                  src={`/placeholder.svg?height=300&width=400&text=Especie+Destacada+${item}`}
                   alt={`Especie Destacada ${item}`}
                   width={400}
                   height={300}
@@ -60,9 +59,9 @@ export default function Biodiversidad() {
                   </CardDescription>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="w-full">
+                  <button variant="outline" className="w-full">
                     Leer más <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  </button>
                 </CardFooter>
               </Card>
             ))}

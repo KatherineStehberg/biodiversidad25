@@ -62,7 +62,7 @@ export default function Investigacion() {
             {publicaciones.map((pub, index) => (
               <Card key={index} className="flex flex-col">
                 <Image
-                  src={pub.imagen}
+                  src={`/placeholder.svg?height=200&width=400&text=Publicación+${index + 1}`}
                   alt={pub.titulo}
                   width={400}
                   height={200}
