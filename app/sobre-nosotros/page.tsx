@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Leaf, Users, BookOpen, Target } from 'lucide-react'
 
@@ -92,5 +91,4 @@ export default function SobreNosotros() {
     </div>
   )
 }
-
 
