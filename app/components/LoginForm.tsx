@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { FaGoogle, FaFacebook, FaInstagram } from 'react-icons/fa'
+import { Mail, Facebook, Instagram } from 'lucide-react'
 
 export function LoginForm() {
   const [email, setEmail] = useState('')
@@ -59,7 +59,7 @@ export function LoginForm() {
             className="w-full flex items-center justify-center"
             variant="outline"
           >
-            <FaGoogle className="mr-2" />
+            <Mail className="mr-2 h-4 w-4" />
             Iniciar sesión con Google
           </Button>
           <Button 
@@ -67,7 +67,7 @@ export function LoginForm() {
             className="w-full flex items-center justify-center"
             variant="outline"
           >
-            <FaFacebook className="mr-2" />
+            <Facebook className="mr-2 h-4 w-4" />
             Iniciar sesión con Facebook
           </Button>
           <Button 
@@ -75,7 +75,7 @@ export function LoginForm() {
             className="w-full flex items-center justify-center"
             variant="outline"
           >
-            <FaInstagram className="mr-2" />
+            <Instagram className="mr-2 h-4 w-4" />
             Iniciar sesión con Instagram
           </Button>
         </div>
