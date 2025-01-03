@@ -66,6 +66,21 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="py-20 bg-green-800 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-6">Recursos Educativos</h2>
+            <p className="text-xl mb-8">
+              Descubre nuestra colección de materiales didácticos, guías de campo, recursos interactivos y juegos educativos para aprender sobre la biodiversidad chilena.
+            </p>
+            <Link href="/recursos-educativos">
+              <Button variant="secondary" size="lg">
+                Explorar Recursos Educativos
+                <ChevronRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+
         <section className="py-20 px-4 bg-green-800 text-white">
           <div className="container mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between">
