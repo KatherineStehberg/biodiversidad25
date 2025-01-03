@@ -2,40 +2,35 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { BookOpen, FileText, Video, Download, Search, ChevronRight } from 'lucide-react'
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { BookOpen, Video, Gamepad2, Download, ChevronRight, Globe, Laptop, Users } from 'lucide-react'
 
 const recursos = [
   {
-    titulo: "Guías de Campo",
-    descripcion: "Descarga guías para identificar especies en tu próxima salida a la naturaleza.",
-    icon: BookOpen,
+    categoria: "Cursos en línea",
     items: [
-      { nombre: "Flora Nativa de Chile", tipo: "PDF" },
-      { nombre: "Aves de la Cordillera", tipo: "PDF" },
-      { nombre: "Mamíferos Marinos", tipo: "PDF" },
+      { titulo: "Introducción a la Biodiversidad Chilena", nivel: "Principiante", duracion: "4 semanas", imagen: "/placeholder.svg" },
+      { titulo: "Ecología de Ecosistemas Andinos", nivel: "Intermedio", duracion: "6 semanas", imagen: "/placeholder.svg" },
+      { titulo: "Conservación Marina Avanzada", nivel: "Avanzado", duracion: "8 semanas", imagen: "/placeholder.svg" },
     ]
   },
   {
-    titulo: "Material Didáctico",
-    descripcion: "Accede a recursos educativos para aprender sobre la biodiversidad chilena.",
-    icon: FileText,
+    categoria: "Juegos educativos",
     items: [
-      { nombre: "Ecosistemas de Chile", tipo: "Presentación" },
-      { nombre: "Ciclo del Agua", tipo: "Infografía" },
-      { nombre: "Cadenas Alimenticias", tipo: "Actividad" },
+      { titulo: "EcoExplorador VR", descripcion: "Explora ecosistemas chilenos en realidad virtual", edad: "12+", imagen: "/placeholder.svg" },
+      { titulo: "BiodiverCity", descripcion: "Construye y gestiona tu propia ciudad ecológica", edad: "10+", imagen: "/placeholder.svg" },
+      { titulo: "Guardián de Especies", descripcion: "Protege especies en peligro en este juego de estrategia", edad: "14+", imagen: "/placeholder.svg" },
     ]
   },
   {
-    titulo: "Cursos Online",
-    descripcion: "Participa en nuestros cursos virtuales sobre conservación y biodiversidad.",
-    icon: Video,
+    categoria: "Material descargable",
     items: [
-      { nombre: "Introducción a la Ecología", tipo: "Curso" },
-      { nombre: "Conservación de Especies Amenazadas", tipo: "Curso" },
-      { nombre: "Técnicas de Observación de Aves", tipo: "Taller" },
+      { titulo: "Guía de Campo Digital", formato: "PDF interactivo", tamaño: "25 MB", imagen: "/placeholder.svg" },
+      { titulo: "Pósters de Biodiversidad en RA", formato: "App + PDF", tamaño: "100 MB", imagen: "/placeholder.svg" },
+      { titulo: "Kit de Ciencia Ciudadana", formato: "ZIP (documentos + app)", tamaño: "150 MB", imagen: "/placeholder.svg" },
     ]
-  },
+  }
 ]
 
 export default function RecursosEducativos() {
@@ -45,116 +40,136 @@ export default function RecursosEducativos() {
         <h1 className="text-4xl font-bold text-green-800 mb-8">Recursos Educativos</h1>
         
         <section className="mb-12">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-green-700 mb-4">Buscar Recursos</h2>
-            <div className="flex gap-4">
-              <Input placeholder="Buscar por palabra clave..." className="flex-grow" />
-              <Button>
-                <Search className="w-4 h-4 mr-2" />
-                Buscar
-              </Button>
-            </div>
-          </div>
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold text-green-700 mb-4">Explora y Aprende</h2>
+              <p className="text-lg text-gray-700 mb-6">
+                Descubre nuestra colección de recursos educativos interactivos diseñados para inspirar y educar sobre la rica biodiversidad de Chile.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center">
+                      <Globe className="w-5 h-5 mr-2" />
+                      Aprendizaje Inmersivo
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    Experiencias de realidad virtual y aumentada que te transportan a los diversos ecosistemas de Chile.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center">
+                      <Laptop className="w-5 h-5 mr-2" />
+                      Cursos Adaptativos
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    Programas de estudio personalizados que se ajustan a tu ritmo y estilo de aprendizaje.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center">
+                      <Users className="w-5 h-5 mr-2" />
+                      Colaboración Global
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    Conecta con estudiantes y expertos de todo el mundo en proyectos de conservación virtuales.
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold text-green-700 mb-6">Categorías de Recursos</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {recursos.map((categoria, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <CardTitle className="flex items-center text-2xl">
-                    <categoria.icon className="w-6 h-6 mr-2 text-green-600" />
-                    {categoria.titulo}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="mb-4">{categoria.descripcion}</CardDescription>
-                  <ul className="space-y-2">
-                    {categoria.items.map((item, idx) => (
-                      <li key={idx} className="flex justify-between items-center">
-                        <span>{item.nombre}</span>
-                        <Button variant="outline" size="sm">
-                          <Download className="w-4 h-4 mr-2" />
-                          {item.tipo}
+          <h2 className="text-3xl font-semibold text-green-700 mb-6">Nuestros Recursos</h2>
+          <Tabs defaultValue="cursos">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="cursos">Cursos en línea</TabsTrigger>
+              <TabsTrigger value="juegos">Juegos educativos</TabsTrigger>
+              <TabsTrigger value="material">Material descargable</TabsTrigger>
+            </TabsList>
+            {recursos.map((categoria) => (
+              <TabsContent key={categoria.categoria} value={categoria.categoria.split(' ')[0].toLowerCase()}>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {categoria.items.map((item, index) => (
+                    <Card key={index} className="flex flex-col">
+                      <Image
+                        src={item.imagen}
+                        alt={item.titulo}
+                        width={400}
+                        height={200}
+                        className="w-full h-48 object-cover rounded-t-lg"
+                      />
+                      <CardHeader>
+                        <CardTitle className="text-xl">{item.titulo}</CardTitle>
+                        {'nivel' in item && <Badge>{item.nivel}</Badge>}
+                        {'edad' in item && <Badge>Edad: {item.edad}</Badge>}
+                        {'formato' in item && <Badge>{item.formato}</Badge>}
+                      </CardHeader>
+                      <CardContent className="flex-grow">
+                        {'duracion' in item && <p>Duración: {item.duracion}</p>}
+                        {'descripcion' in item && <p>{item.descripcion}</p>}
+                        {'tamaño' in item && <p>Tamaño: {item.tamaño}</p>}
+                      </CardContent>
+                      <CardFooter>
+                        <Button className="w-full">
+                          {categoria.categoria === "Cursos en línea" ? "Inscribirse" : 
+                           categoria.categoria === "Juegos educativos" ? "Jugar ahora" : "Descargar"}
+                          <ChevronRight className="w-4 h-4 ml-2" />
                         </Button>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full">
-                    Ver todos los {categoria.titulo.toLowerCase()}
-                    <ChevronRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </CardFooter>
-              </Card>
+                      </CardFooter>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
             ))}
-          </div>
+          </Tabs>
         </section>
 
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold text-green-700 mb-6">Recursos Destacados</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="flex flex-col md:flex-row overflow-hidden">
-              <Image
-                src="/placeholder.svg"
-                alt="Guía de Identificación de Aves"
-                width={300}
-                height={200}
-                className="w-full md:w-1/3 object-cover"
-              />
-              <div className="p-6 flex flex-col justify-between flex-grow">
-                <div>
-                  <CardTitle className="mb-2">Guía de Identificación de Aves</CardTitle>
-                  <CardDescription>
-                    Una completa guía ilustrada para identificar las aves más comunes de Chile.
-                  </CardDescription>
-                </div>
-                <Button className="mt-4">
-                  Descargar Guía
-                  <Download className="ml-2 w-4 h-4" />
-                </Button>
-              </div>
-            </Card>
-            <Card className="flex flex-col md:flex-row overflow-hidden">
-              <Image
-                src="/placeholder.svg"
-                alt="Curso de Conservación Marina"
-                width={300}
-                height={200}
-                className="w-full md:w-1/3 object-cover"
-              />
-              <div className="p-6 flex flex-col justify-between flex-grow">
-                <div>
-                  <CardTitle className="mb-2">Curso de Conservación Marina</CardTitle>
-                  <CardDescription>
-                    Aprende sobre los ecosistemas marinos de Chile y cómo protegerlos.
-                  </CardDescription>
-                </div>
-                <Button className="mt-4">
-                  Inscribirse al Curso
-                  <ChevronRight className="ml-2 w-4 h-4" />
-                </Button>
-              </div>
-            </Card>
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl">Programa de Certificación en Biodiversidad</CardTitle>
+              <CardDescription>
+                Obtén una certificación reconocida internacionalmente en el estudio y conservación de la biodiversidad chilena.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">Nuestro programa de certificación incluye:</p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Cursos especializados impartidos por expertos</li>
+                <li>Proyectos prácticos de conservación</li>
+                <li>Acceso a herramientas de investigación avanzadas</li>
+                <li>Networking con profesionales del sector</li>
+              </ul>
+            </CardContent>
+            <CardFooter>
+              <Button>
+                Explorar programa de certificación
+                <ChevronRight className="w-4 h-4 ml-2" />
+              </Button>
+            </CardFooter>
+          </Card>
         </section>
 
         <section className="bg-green-800 text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-semibold mb-4">¿Quieres contribuir con recursos educativos?</h2>
+          <h2 className="text-3xl font-semibold mb-4">¿Eres educador?</h2>
           <p className="mb-6 text-lg">
-            Si eres educador o experto en biodiversidad, nos encantaría contar con tu aporte.
+            Accede a nuestros recursos especiales para educadores, incluyendo planes de lección, kits de laboratorio virtual y herramientas de evaluación.
           </p>
-          <Link href="/contacto">
-            <Button variant="secondary" size="lg">
-              Contacta con nosotros
-              <ChevronRight className="ml-2 w-4 h-4" />
-            </Button>
-          </Link>
+          <Button variant="secondary" size="lg">
+            Área de educadores
+            <ChevronRight className="w-4 h-4 ml-2" />
+          </Button>
         </section>
       </main>
     </div>
   )
 }
+
 
