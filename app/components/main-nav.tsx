@@ -16,7 +16,7 @@ const navItems = [
   { name: 'Contacto', href: '/contacto', icon: Mail },
 ]
 
-export function MainNav() {
+export async function MainNav() {
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
       <div className="container mx-auto px-4 py-4">
@@ -42,6 +42,7 @@ export function MainNav() {
     </header>
   )
 }
+
 
 
 
