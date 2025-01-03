@@ -4,31 +4,31 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { BookOpen, Video, Gamepad2, Download, ChevronRight, Globe, Laptop, Users } from 'lucide-react'
+import { BookOpen, Video, Download, ChevronRight, Globe, Laptop, Users, Gamepad2 } from 'lucide-react'
 
 const recursos = [
   {
-    categoria: "Cursos en línea",
+    categoria: "Guías de campo",
     items: [
-      { titulo: "Introducción a la Biodiversidad Chilena", nivel: "Principiante", duracion: "4 semanas", imagen: "/placeholder.svg" },
-      { titulo: "Ecología de Ecosistemas Andinos", nivel: "Intermedio", duracion: "6 semanas", imagen: "/placeholder.svg" },
-      { titulo: "Conservación Marina Avanzada", nivel: "Avanzado", duracion: "8 semanas", imagen: "/placeholder.svg" },
+      { titulo: "Flora Nativa de Chile", tipo: "PDF", tamaño: "15 MB", imagen: "/placeholder.svg" },
+      { titulo: "Aves de la Cordillera", tipo: "PDF", tamaño: "12 MB", imagen: "/placeholder.svg" },
+      { titulo: "Mamíferos Marinos", tipo: "PDF", tamaño: "18 MB", imagen: "/placeholder.svg" },
     ]
   },
   {
-    categoria: "Juegos educativos",
+    categoria: "Videos educativos",
     items: [
-      { titulo: "EcoExplorador VR", descripcion: "Explora ecosistemas chilenos en realidad virtual", edad: "12+", imagen: "/placeholder.svg" },
-      { titulo: "BiodiverCity", descripcion: "Construye y gestiona tu propia ciudad ecológica", edad: "10+", imagen: "/placeholder.svg" },
-      { titulo: "Guardián de Especies", descripcion: "Protege especies en peligro en este juego de estrategia", edad: "14+", imagen: "/placeholder.svg" },
+      { titulo: "Ecosistemas de Chile", duracion: "15 min", imagen: "/placeholder.svg" },
+      { titulo: "Ciclo del Agua en la Naturaleza", duracion: "10 min", imagen: "/placeholder.svg" },
+      { titulo: "Biodiversidad en Peligro", duracion: "20 min", imagen: "/placeholder.svg" },
     ]
   },
   {
-    categoria: "Material descargable",
+    categoria: "Infografías",
     items: [
-      { titulo: "Guía de Campo Digital", formato: "PDF interactivo", tamaño: "25 MB", imagen: "/placeholder.svg" },
-      { titulo: "Pósters de Biodiversidad en RA", formato: "App + PDF", tamaño: "100 MB", imagen: "/placeholder.svg" },
-      { titulo: "Kit de Ciencia Ciudadana", formato: "ZIP (documentos + app)", tamaño: "150 MB", imagen: "/placeholder.svg" },
+      { titulo: "Cadenas Alimenticias", tipo: "JPG", tamaño: "5 MB", imagen: "/placeholder.svg" },
+      { titulo: "Especies Endémicas", tipo: "PNG", tamaño: "4 MB", imagen: "/placeholder.svg" },
+      { titulo: "Zonas Climáticas de Chile", tipo: "PDF", tamaño: "8 MB", imagen: "/placeholder.svg" },
     ]
   }
 ]
@@ -44,40 +44,40 @@ export default function RecursosEducativos() {
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold text-green-700 mb-4">Explora y Aprende</h2>
               <p className="text-lg text-gray-700 mb-6">
-                Descubre nuestra colección de recursos educativos interactivos diseñados para inspirar y educar sobre la rica biodiversidad de Chile.
+                Descubre nuestra colección de recursos educativos diseñados para inspirar y educar sobre la rica biodiversidad de Chile.
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       <Globe className="w-5 h-5 mr-2" />
-                      Aprendizaje Inmersivo
+                      Diversidad de Contenidos
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    Experiencias de realidad virtual y aumentada que te transportan a los diversos ecosistemas de Chile.
+                    Desde guías de campo hasta videos e infografías, ofrecemos una amplia gama de recursos para todos los estilos de aprendizaje.
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       <Laptop className="w-5 h-5 mr-2" />
-                      Cursos Adaptativos
+                      Acceso Digital
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    Programas de estudio personalizados que se ajustan a tu ritmo y estilo de aprendizaje.
+                    Todos nuestros recursos están disponibles en formato digital para un fácil acceso y uso en cualquier dispositivo.
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       <Users className="w-5 h-5 mr-2" />
-                      Colaboración Global
+                      Para Todos los Niveles
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    Conecta con estudiantes y expertos de todo el mundo en proyectos de conservación virtuales.
+                    Contamos con materiales adaptados para estudiantes, educadores y entusiastas de todas las edades y niveles de conocimiento.
                   </CardContent>
                 </Card>
               </div>
@@ -87,11 +87,12 @@ export default function RecursosEducativos() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-semibold text-green-700 mb-6">Nuestros Recursos</h2>
-          <Tabs defaultValue="cursos">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="cursos">Cursos en línea</TabsTrigger>
-              <TabsTrigger value="juegos">Juegos educativos</TabsTrigger>
-              <TabsTrigger value="material">Material descargable</TabsTrigger>
+          <Tabs defaultValue="guias">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="guias">Guías de campo</TabsTrigger>
+              <TabsTrigger value="videos">Videos educativos</TabsTrigger>
+              <TabsTrigger value="infografias">Infografías</TabsTrigger>
+              <TabsTrigger value="juego">Juego Educativo</TabsTrigger>
             </TabsList>
             {recursos.map((categoria) => (
               <TabsContent key={categoria.categoria} value={categoria.categoria.split(' ')[0].toLowerCase()}>
@@ -107,20 +108,16 @@ export default function RecursosEducativos() {
                       />
                       <CardHeader>
                         <CardTitle className="text-xl">{item.titulo}</CardTitle>
-                        {'nivel' in item && <Badge>{item.nivel}</Badge>}
-                        {'edad' in item && <Badge>Edad: {item.edad}</Badge>}
-                        {'formato' in item && <Badge>{item.formato}</Badge>}
+                        {'tipo' in item && <Badge>{item.tipo}</Badge>}
+                        {'duracion' in item && <Badge>{item.duracion}</Badge>}
                       </CardHeader>
                       <CardContent className="flex-grow">
-                        {'duracion' in item && <p>Duración: {item.duracion}</p>}
-                        {'descripcion' in item && <p>{item.descripcion}</p>}
                         {'tamaño' in item && <p>Tamaño: {item.tamaño}</p>}
                       </CardContent>
                       <CardFooter>
                         <Button className="w-full">
-                          {categoria.categoria === "Cursos en línea" ? "Inscribirse" : 
-                           categoria.categoria === "Juegos educativos" ? "Jugar ahora" : "Descargar"}
-                          <ChevronRight className="w-4 h-4 ml-2" />
+                          {categoria.categoria === "Videos educativos" ? "Ver video" : "Descargar"}
+                          <Download className="w-4 h-4 ml-2" />
                         </Button>
                       </CardFooter>
                     </Card>
@@ -128,29 +125,61 @@ export default function RecursosEducativos() {
                 </div>
               </TabsContent>
             ))}
+            <TabsContent value="juego">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center">
+                    <Gamepad2 className="w-6 h-6 mr-2" />
+                    Quiz de Biodiversidad Chilena
+                  </CardTitle>
+                  <CardDescription>
+                    Pon a prueba tus conocimientos sobre la biodiversidad de Chile con nuestro juego educativo interactivo.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Image
+                    src="/placeholder.svg"
+                    alt="Quiz de Biodiversidad"
+                    width={600}
+                    height={300}
+                    className="w-full h-64 object-cover rounded-lg mb-4"
+                  />
+                  <p className="mb-4">
+                    Aprende sobre especies nativas, ecosistemas y conservación mientras te diviertes con preguntas desafiantes y datos interesantes.
+                  </p>
+                </CardContent>
+                <CardFooter>
+                  <Link href="/recursos-educativos/juego-educativo" className="w-full">
+                    <Button className="w-full">
+                      Jugar ahora
+                      <ChevronRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            </TabsContent>
           </Tabs>
         </section>
 
         <section className="mb-12">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Programa de Certificación en Biodiversidad</CardTitle>
+              <CardTitle className="text-2xl">Recursos para Educadores</CardTitle>
               <CardDescription>
-                Obtén una certificación reconocida internacionalmente en el estudio y conservación de la biodiversidad chilena.
+                Material especialmente diseñado para apoyar la enseñanza de la biodiversidad en el aula.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">Nuestro programa de certificación incluye:</p>
               <ul className="list-disc list-inside space-y-2">
-                <li>Cursos especializados impartidos por expertos</li>
-                <li>Proyectos prácticos de conservación</li>
-                <li>Acceso a herramientas de investigación avanzadas</li>
-                <li>Networking con profesionales del sector</li>
+                <li>Planes de lección sobre biodiversidad chilena</li>
+                <li>Actividades prácticas para el aula</li>
+                <li>Guías para excursiones educativas</li>
+                <li>Material de evaluación</li>
               </ul>
             </CardContent>
             <CardFooter>
               <Button>
-                Explorar programa de certificación
+                Acceder a recursos para educadores
                 <ChevronRight className="w-4 h-4 ml-2" />
               </Button>
             </CardFooter>
@@ -158,12 +187,12 @@ export default function RecursosEducativos() {
         </section>
 
         <section className="bg-green-800 text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-semibold mb-4">¿Eres educador?</h2>
+          <h2 className="text-3xl font-semibold mb-4">¿Quieres contribuir con recursos educativos?</h2>
           <p className="mb-6 text-lg">
-            Accede a nuestros recursos especiales para educadores, incluyendo planes de lección, kits de laboratorio virtual y herramientas de evaluación.
+            Si eres educador, científico o entusiasta de la biodiversidad, nos encantaría contar con tu aporte para enriquecer nuestra colección de recursos.
           </p>
           <Button variant="secondary" size="lg">
-            Área de educadores
+            Compartir un recurso
             <ChevronRight className="w-4 h-4 ml-2" />
           </Button>
         </section>
@@ -171,6 +200,4 @@ export default function RecursosEducativos() {
     </div>
   )
 }
-
-
 
